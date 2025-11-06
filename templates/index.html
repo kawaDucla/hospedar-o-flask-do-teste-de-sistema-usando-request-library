@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Usuários - Firebase CRUD</title>
+  <style>
+    body { font-family: Arial; margin: 40px; background: #f7f7f7; }
+    h1 { color: #333; }
+    table { border-collapse: collapse; width: 80%; background: white; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    th { background: #eee; }
+    a { text-decoration: none; color: #007bff; margin-right: 10px; }
+    a:hover { text-decoration: underline; }
+    form { margin-top: 20px; }
+    input { padding: 8px; margin-right: 10px; }
+    button { padding: 8px 12px; background: #28a745; color: white; border: none; border-radius: 5px; }
+    button:hover { background: #218838; }
+  </style>
+</head>
+<body>
+  <h1>Lista de Usuários</h1>
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Sobrenome</th>
+      <th>Ações</th>
+    </tr>
+    {% for id, pessoa in dados.items() %}
+    <tr>
+      <td>{{ id }}</td>
+      <td>{{ pessoa["Nome"] }}</td>
+      <td>{{ pessoa["Sobrenome"] }}</td>
+      <td>
+        <a href="/edit/{{ id }}">✏️ Editar</a>
+        <a href="/delete/{{ id }}" onclick="return confirm('Tem certeza que deseja excluir?')">🗑️ Excluir</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <h2>Adicionar novo usuário</h2>
+  <form action="/add" method="POST">
+    <input type="text" name="nome" placeholder="Nome" required>
+    <input type="text" name="sobrenome" placeholder="Sobrenome" required>
+    <button type="submit">Salvar</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Usuário</title>
+  <style>
+    body { font-family: Arial; margin: 40px; background: #f7f7f7; }
+    form { background: white; padding: 20px; border-radius: 10px; width: 300px; }
+    input { display: block; margin: 10px 0; padding: 8px; width: 90%; }
+    button { padding: 8px 12px; background: #007bff; color: white; border: none; border-radius: 5px; }
+    a { display: inline-block; margin-top: 10px; text-decoration: none; color: #333; }
+  </style>
+</head>
+<body>
+  <h1>Editar Usuário</h1>
+  <form action="/update/{{ id }}" method="POST">
+    <input type="text" name="nome" value="{{ dados['Nome'] }}" required>
+    <input type="text" name="sobrenome" value="{{ dados['Sobrenome'] }}" required>
+    <button type="submit">Salvar alterações</button>
+  </form>
+  <a href="/">← Voltar</a>
+</body>
+</html>
